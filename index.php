@@ -1,11 +1,11 @@
 <?php
-/* iNICIALIZAR VARIABLES */ 
+/* iNICIALIZAR VARIABLES */
 $duendes = 0;
 $renos = 0;
 $hilos_corriendo = " ";
 $despertar_a_santa = "FALSE";
 
-/* SI SE PRESIONA ALGUN BOTON */ 
+/* SI SE PRESIONA ALGUN BOTON */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $renos = $_POST["new_reno"];
@@ -25,6 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+
 </head>
 
 <body style="padding: 0; margin:0;">
@@ -38,8 +41,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <!-- Header  -->
 
   <br>
+  <!-- Button trigger modal -->
+  <div class="px-2">
+    <abbr title="Informacion del Equipo">
+      <button type="button" class="btn btn-primary rounded-circle border border-3 border-dark " data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        &nbsp; i &nbsp;
+      </button>
+    </abbr>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        </div>
+        <div class="modal-body text-center pt-2">
+
+          <h5>Universidad de Guadaljara</h5>
+          <h6> Centro Universitario de los Altos</h6>
+
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Escudo_UdeG.svg/441px-Escudo_UdeG.svg.png"
+            class="rounded mx-auto d-block pt-2" alt="..." style="width:10em;height:12rem">
+
+          <h5>Sistemas Concurrentes y Distribuidos</h5>
+          <h6> Integrantes </h6>
+
+          <div style="list-style-type:square; line-height: 20%; ">
+
+            <h6> Jazmin</h6>
+            <h6>Áaron </h6>
+            <h6> Jacky </h6>
+            <h6> Cielo </h6>
+
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <div class="container" style="ma-width: 100%">
+
+
 
     <div class="row text-center">
 
@@ -57,8 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <h2>Santa Claus Durmiendo</h2>
             </div>
             <?php
-            if ($despertar_a_santa == "FALSE") {  /* Santa esta mimido */ 
-              ?>  
+            if ($despertar_a_santa == "FALSE") { /* Santa esta mimido */
+              ?>
               <img src="https://i.gifer.com/origin/ac/ac6384a6e036b6d80d0c733fee379bd6.gif"
                 class="img-fluid mx-auto d-block" alt="Santa Claus Dormido">
 
@@ -66,12 +118,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
               ?>
               <?php
-              if ($despertar_a_santa == "TRUE" && $hilos_corriendo == "Duedes y Santa"){ /* Hilo de santa y duendes */ 
+              if ($despertar_a_santa == "TRUE" && $hilos_corriendo == "Duedes y Santa") { /* Hilo de santa y duendes */
                 ?>
 
                 AQUI VAN LOS DUENDES Y SANTA
                 <?php
-              } else{ /* Hilo de renos y santa */ 
+              } else { /* Hilo de renos y santa */
                 ?>
                 AQUI VAN LOS RENOS Y SANTA
 
@@ -79,13 +131,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               }
               ?>
               <?php
-            }/* Santa no esta mimido */
+            } /* Santa no esta mimido */
             ?>
           </div>
         </div>
       </div>
- <!-- FIN DE SANTA -->
-  <!-- INICIO DE DUEDES -->
+      <!-- FIN DE SANTA -->
+      <!-- INICIO DE DUEDES -->
       <div class="col-12 col-md-5">
         <section>
 
@@ -128,7 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="">
 
                       <h6> <label for="new">Agregar/Elminar Duendes</label></h6>
-  <!-- Mientras el numero de duendes sea menor a 3 mostrar este formulario -->
+                      <!-- Mientras el numero de duendes sea menor a 3 mostrar este formulario -->
                       <input type="number" id="new_duende" name="new_duende" value="<?php echo $duendes ?>" min="0"
                         max="3">
                       <input id="new_reno" name="new_reno" type="hidden" value="0">
@@ -145,14 +197,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   ?>
                   <form method="post" id="formulario" class="col-12">
                     <div class="">
-  <!-- Si el numero de duendes es 3, preguntar si desea pedir ayuda a santa -->
+                      <!-- Si el numero de duendes es 3, preguntar si desea pedir ayuda a santa -->
                       <h5> <label for="new">¿Pedir ayuda a Santa?</label></h5>
 
                       <input type="hidden" type="number" id="new_duende" name="new_duende" value="<?php echo $duendes ?>"
                         min="0" max="3">
                       <input id="new_reno" name="new_reno" type="hidden" value="0">
                       <input id="procesos" name="procesos" type="hidden" value="Duedes y Santa">
-  <!-- Mostrar opciones -->
+                      <!-- Mostrar opciones -->
                       <select name="desp_santa">
                         <option value="TRUE">Despertar Ahora</option>
                         <option value="FALSE" selected>Por ahora no</option>
@@ -170,7 +222,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </div>
             </div>
         </section>
-      <!-- FIN DE DUEDES -->
+        <!-- FIN DE DUEDES -->
 
         <section class="border pt-2">
 
@@ -202,7 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   /* IF para ver  que formulario se coloca */
                   if ($renos < 9) { /* Si aun no excede el numero de duendes para despertar a santa */
                     ?>
-  <!-- Mientras el numero de RENOS sea menor a 9 mostrar este formulario -->
+                    <!-- Mientras el numero de RENOS sea menor a 9 mostrar este formulario -->
                     <form method="post" id="formulario" class="col-12">
                       <div class="">
                         <h6> <label for="new">Número de procesos de Reno</label></h6>
@@ -221,7 +273,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ?>
                     <form method="post" id="formulario" class="col-12">
                       <div class="">
-  <!-- Si el numero de RENOS es 9 preguntar si desea enganchar el trineo -->
+                        <!-- Si el numero de RENOS es 9 preguntar si desea enganchar el trineo -->
 
                         <h5> <label for="new">¿Enganchar el trineo?</label></h5>
 
@@ -229,7 +281,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           min="0" max="3">
                         <input id="new_duende" name="new_duende" type="hidden" value="0">
                         <input id="procesos" name="procesos" type="hidden" value="Renos y santa">
-  <!-- Mostrar opciones -->
+                        <!-- Mostrar opciones -->
                         <select name="desp_santa">
                           <option value="TRUE">Despertar Ahora</option>
                           <option value="FALSE" selected>Por ahora no</option>
@@ -252,9 +304,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
